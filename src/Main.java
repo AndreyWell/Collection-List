@@ -13,6 +13,7 @@ public class Main {
             System.out.println("1 Добавить");
             System.out.println("2 Показать");
             System.out.println("3 Удалить");
+            System.out.println("4 Поиск");
 
             String input = in.nextLine();
 
@@ -64,8 +65,8 @@ public class Main {
                         System.out.println("Покупка \"" + item + "\" удалена, список покупок:");
                         for (int i = 0; i < list.size(); i++) {
                             System.out.println((i + 1) + ". " + list.get(i));
-                            System.out.println();
                         }
+                        System.out.println();
                     }
                 } catch (NumberFormatException exception) {
                     String deletedItem = delete;
@@ -73,8 +74,24 @@ public class Main {
                     System.out.println("Покупка \"" + deletedItem + "\" удалена, список покупок:");
                     for (int i = 0; i < list.size(); i++) {
                         System.out.println((i + 1) + ". " + list.get(i));
-                        System.out.println();
                     }
+                    System.out.println();
+                }
+            } else if (Integer.parseInt(input) == 4) {
+                System.out.println("Введите текст для поиска");
+                String findText = in.nextLine();
+                if (list.isEmpty()) {
+                    System.out.println("Список покупок пуст");
+                    System.out.println();
+                } else {
+                    System.out.println("Найдено:");
+                    for (int i = 0; i < list.size(); i++) {
+                        String itemLower = list.get(i).toLowerCase();
+                        if (itemLower.contains(findText.toLowerCase())) {
+                            System.out.println((i + 1) + ". " + list.get(i));
+                        }
+                    }
+                    System.out.println();
                 }
             }
         }
